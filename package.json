@@ -16,7 +16,7 @@
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Anton Timofeenko <shockfront00@gmail.com> (https://github.com/anton-github)",
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
