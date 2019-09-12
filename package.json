@@ -1,7 +1,7 @@
 {
   "name": "@deleteagency/axios-singular",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "A wrapper around axios that makes sure only one request is in progress at the same time",
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -16,7 +16,7 @@
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Anton Timofeenko <shockfront00@gmail.com> (https://github.com/anton-github)",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
