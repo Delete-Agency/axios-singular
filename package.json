@@ -1,18 +1,23 @@
 {
   "name": "@deleteagency/axios-singular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Delete-Agency/axios-singular.git"
+  },
+  "homepage": "https://github.com/Delete-Agency/axios-singular",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
