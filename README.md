@@ -4,8 +4,7 @@
 
 ## Motivation
 
-TODO
-About parallel request and not guaranteed order of receiving reponses
+TODO About parallel request and not guaranteed order of receiving reponses
 
 
 ## Installation
