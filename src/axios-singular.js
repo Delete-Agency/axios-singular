@@ -1,8 +1,8 @@
 export default class AxiosSingular {
-    constructor(axiosInstance, CancelToken, isCanceled) {
+    constructor(axiosInstance, CancelToken, isCancel) {
         this._axiosInstance = axiosInstance;
         this._CancelToken = axiosInstance.CancelToken || CancelToken;
-        this._isCanceled = axiosInstance.isCanceled || isCanceled;
+        this._isCancel = axiosInstance.isCancel || isCancel;
         this._lastRequestCancel = null;
     }
 
@@ -69,7 +69,7 @@ export default class AxiosSingular {
             this._lastRequestCancel = null;
             return response;
         }, (error) => {
-            if (!this._isCanceled(error)) {
+            if (!this._isCancel(error)) {
                 this._lastRequestCancel = null;
             }
             return Promise.reject(error);

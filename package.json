@@ -1,6 +1,6 @@
 {
   "name": "@deleteagency/axios-singular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wrapper around axios that makes sure only one request is in progress at the same time",
   "main": "index.js",
   "directories": {

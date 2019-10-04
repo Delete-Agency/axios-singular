@@ -86,7 +86,7 @@
             <h2>Custom axios instance example</h2>
 
             <p>
-                In order to use custom axios instance you have to pass CancelToken and isCanceled as additional arguments.
+                In order to use custom axios instance you have to pass CancelToken and isCancel as additional arguments.
                 <br>
                 That's because custom instances don't have all of the base axios properties.
                 Read more the author response in this issue <a href="https://github.com/axios/axios/issues/1330#issuecomment-362846633">https://github.com/axios/axios/issues/1330</a>
@@ -106,7 +106,7 @@
 
                 const loadCustomButton = document.getElementById('load-custom');
                 const cancelCustomButton = document.getElementById('cancel-custom');
-                const axiosSingularCustom = new AxiosSingular(customAxios, axios.CancelToken, axios.isCanceled);
+                const axiosSingularCustom = new AxiosSingular(customAxios, axios.CancelToken, axios.isCancel);
 
                 loadCustomButton.addEventListener('click', () => {
                     axiosSingularCustom.get('examples/test.json').then(response => {

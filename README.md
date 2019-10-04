@@ -36,11 +36,11 @@ instance.get("/posts")
 
 ## API
 
-### constructor(axiosInstance[, CancelToken, isCanceled])
+### constructor(axiosInstance[, CancelToken, isCancel])
 
 Returns `AxiosSingular`.
 
-In order to use custom axios instance you have to pass CancelToken and isCanceled as additional arguments.
+In order to use custom axios instance you have to pass CancelToken and isCancel as additional arguments.
 That's because custom instances don't have all base axios properties. Read this comment: https://github.com/axios/axios/issues/1330#issuecomment-362846633
 
 #### axiosInstance
@@ -57,12 +57,12 @@ Type: `object`
 
 CancelToken from the base axios instance
 
-#### isCanceled
+#### isCancel
 
 *Optional*<br>
 Type: `Function`
 
-isCanceled from the base axios instance
+isCancel from the base axios instance
 
 ### get(...) (request, delete, head, options, post, put, patch)
 
