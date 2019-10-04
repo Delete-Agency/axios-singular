@@ -1,6 +1,8 @@
 export default class AxiosSingular {
-    constructor(axiosInstance) {
+    constructor(axiosInstance, CancelToken, isCanceled) {
         this._axiosInstance = axiosInstance;
+        this._CancelToken = axiosInstance.CancelToken || CancelToken;
+        this._isCanceled = axiosInstance.isCanceled || isCanceled;
         this._lastRequestCancel = null;
     }
 
@@ -16,10 +18,8 @@ export default class AxiosSingular {
     }
 
     _getPatchedConfig(config) {
-        const CancelToken = this._axiosInstance.CancelToken;
-        const source = CancelToken.source();
+        const source = this._CancelToken.source();
         this._lastRequestCancel = source.cancel.bind(source);
-
         config.cancelToken = source.token;
         return config;
     }
@@ -69,7 +69,7 @@ export default class AxiosSingular {
             this._lastRequestCancel = null;
             return response;
         }, (error) => {
-            if (!this._axiosInstance.isCancel(error)) {
+            if (!this._isCanceled(error)) {
                 this._lastRequestCancel = null;
             }
             return Promise.reject(error);

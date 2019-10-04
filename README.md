@@ -6,7 +6,6 @@
 
 TODO About parallel request and not guaranteed order of receiving reponses
 
-
 ## Installation
 
 Use the package manager [npm](https://docs.npmjs.com/about-npm/) for installation.
@@ -37,9 +36,12 @@ instance.get("/posts")
 
 ## API
 
-### constructor(axiosInstance)
+### constructor(axiosInstance[, CancelToken, isCanceled])
 
 Returns `AxiosSingular`.
+
+In order to use custom axios instance you have to pass CancelToken and isCanceled as additional arguments.
+That's because custom instances don't have all base axios properties. Read this comment: https://github.com/axios/axios/issues/1330#issuecomment-362846633
 
 #### axiosInstance
 
@@ -47,6 +49,20 @@ Returns `AxiosSingular`.
 Type: `object`
 
 Default or any custom axios instance. See details here: https://github.com/axios/axios#creating-an-instance
+
+#### CancelToken
+
+*Optional*<br>
+Type: `object`
+
+CancelToken from the base axios instance
+
+#### isCanceled
+
+*Optional*<br>
+Type: `Function`
+
+isCanceled from the base axios instance
 
 ### get(...) (request, delete, head, options, post, put, patch)
 

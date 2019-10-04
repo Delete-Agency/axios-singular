@@ -41,15 +41,9 @@
 <body>
 <div class="py-4">
     <div class="container">
-        <h2>Simple example</h2>
-
-        <div data-live-highlight-target="simple"></div>
-
         <div class="mb-5">
-            <div data-live-highlight="simple">
-                <button class="btn btn-primary" id="load">Send a request</button>
-                <button class="btn btn-primary" id="cancel">Cancel</button>
-            </div>
+            <h2>Simple example</h2>
+
             <p>
                 Open Chrome Dev Tools Network Tab and enable network throttling to achieve sending parallel requests.
                 Hit Send a request button a few times and you will see that once another request is sent while previous is still in progress
@@ -59,27 +53,76 @@
                 Note: if you testing it locally within the cloned repo - make sure you are opening this file via web server. file:/// doesn't work with CORS
                 so you won't be able to send request with axios, so it has to be something like http://localhost:3000/index.html
             </p>
+
+            <div data-live-highlight-target="simple"></div>
+
+            <div data-live-highlight="simple">
+                <button class="btn btn-primary" id="load">Send a request</button>
+                <button class="btn btn-primary" id="cancel">Cancel</button>
+            </div>
+
+            <script data-live-highlight="simple">
+                const loadButton = document.getElementById('load');
+                const cancelButton = document.getElementById('cancel');
+                const axiosSingular = new AxiosSingular(axios);
+
+                loadButton.addEventListener('click', () => {
+                    axiosSingular.get('examples/test.json').then(response => {
+                        console.log('Request was finished ')
+                    }, (error) => {
+                        if (axios.isCancel(error)) {
+                            console.log('Request was canceled');
+                        }
+                    })
+                });
+
+                cancelButton.addEventListener('click', () => {
+                    axiosSingular.cancel('Canceled by user');
+                })
+            </script>
         </div>
 
-        <script data-live-highlight="simple">
-            const loadButton = document.getElementById('load');
-            const cancelButton = document.getElementById('cancel');
-            const axiosSingular = new AxiosSingular(axios);
+        <div class="mb-5">
+            <h2>Custom axios instance example</h2>
 
-            loadButton.addEventListener('click', () => {
-                axiosSingular.get('examples/test.json').then(response => {
-                    console.log('Request was successful ')
-                }, (error) => {
-                    if (axios.isCancel(error)) {
-                        console.log('Request was canceled');
-                    }
+            <p>
+                In order to use custom axios instance you have to pass CancelToken and isCanceled as additional arguments.
+                <br>
+                That's because custom instances don't have all of the base axios properties.
+                Read more the author response in this issue <a href="https://github.com/axios/axios/issues/1330#issuecomment-362846633">https://github.com/axios/axios/issues/1330</a>
+            </p>
+
+            <div data-live-highlight-target="custom"></div>
+
+            <div>
+                <button class="btn btn-primary" id="load-custom">Send a request</button>
+                <button class="btn btn-primary" id="cancel-custom">Cancel</button>
+            </div>
+
+            <script data-live-highlight="custom">
+                const customAxios = axios.create({
+                    timeout: 30000,
+                });
+
+                const loadCustomButton = document.getElementById('load-custom');
+                const cancelCustomButton = document.getElementById('cancel-custom');
+                const axiosSingularCustom = new AxiosSingular(customAxios, axios.CancelToken, axios.isCanceled);
+
+                loadCustomButton.addEventListener('click', () => {
+                    axiosSingularCustom.get('examples/test.json').then(response => {
+                        console.log('Custom axios request was finished ')
+                    }, (error) => {
+                        if (axios.isCancel(error)) {
+                            console.log('Request was canceled');
+                        }
+                    })
+                });
+
+                cancelCustomButton.addEventListener('click', () => {
+                    axiosSingularCustom.cancel('Canceled by user');
                 })
-            });
-
-            cancelButton.addEventListener('click', () => {
-                axiosSingular.cancel('Canceled by user');
-            })
-        </script>
+            </script>
+        </div>
     </div>
 </div>
 </body>
