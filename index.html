@@ -18,7 +18,7 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@deleteagency/live-highlight@0.0.1/build/live-highlight.min.js"></script>
 
-    <script src="build/axios-singular.min.js"></script>
+    <script src="demo/dist/axios-singular.min.js"></script>
 </head>
 
 <script>
@@ -67,7 +67,7 @@
                 const axiosSingular = new AxiosSingular(axios);
 
                 loadButton.addEventListener('click', () => {
-                    axiosSingular.get('examples/test.json').then(response => {
+                    axiosSingular.get('demo/test.json').then(response => {
                         console.log('Request was finished ')
                     }, (error) => {
                         if (axios.isCancel(error)) {

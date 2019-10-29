@@ -1,0 +1,1 @@
+module.exports.AxiosSingular = require('./axios-singular').default;
