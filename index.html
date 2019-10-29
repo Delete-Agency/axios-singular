@@ -109,7 +109,7 @@
                 const axiosSingularCustom = new AxiosSingular(customAxios, axios.CancelToken, axios.isCancel);
 
                 loadCustomButton.addEventListener('click', () => {
-                    axiosSingularCustom.get('examples/test.json').then(response => {
+                    axiosSingularCustom.get('demo/test.json').then(response => {
                         console.log('Custom axios request was finished ')
                     }, (error) => {
                         if (axios.isCancel(error)) {
