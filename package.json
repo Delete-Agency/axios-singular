@@ -3,9 +3,6 @@
   "version": "1.0.1",
   "description": "A wrapper around axios that makes sure only one request is in progress at the same time",
   "main": "lib/index.js",
-  "directories": {
-    "example": "examples"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Delete-Agency/axios-singular.git"
